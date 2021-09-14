@@ -5,6 +5,14 @@
   justify-content: center;
 }
 
+main > div > input {
+  padding: 0.5rem;
+}
+
+main > div > button {
+  padding: 0.5rem;
+}
+
 #toDoList {
   list-style: none;
   padding: 0;
