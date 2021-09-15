@@ -17,10 +17,14 @@
         <p>Desenvolvido por: Lucas Bueno Cesario</p>
       </header>
       <main>
-        <div>
-          <input type="text" placeholder="Digite uma tarefa..." />
-          <button onclick="addTask()">Adicionar</button>
-        </div>
+        <form action="#" onsubmit="addTask(event)">
+          <input
+            id="inputTask"
+            type="text"
+            placeholder="Digite uma tarefa..."
+          />
+          <button type="submit">Adicionar</button>
+        </form>
         <div>
           <ul id="toDoList"></ul>
         </div>

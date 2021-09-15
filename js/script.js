@@ -11,11 +11,13 @@ function load() {
 function save() {
   const lis = document.querySelector("#toDoList").children;
   const tasks = [];
+
   for (const li of lis) {
     const task = li.children[1].innerHTML;
     const isChecked = li.children[0].checked;
     tasks.push({ task, isChecked });
   }
+
   localStorage.setItem("@toDoList:tasks", JSON.stringify(tasks));
 }
 
@@ -28,8 +30,10 @@ function createListItem(text, isChecked = false) {
   checkbox.addEventListener("change", strikeThroughTask);
   const span = document.createElement("span");
   span.innerHTML = text;
+  span.classList.add("task");
   const buttonDelete = document.createElement("button");
   buttonDelete.innerHTML = "X";
+  buttonDelete.addEventListener("click", deleteTask);
 
   if (isChecked) {
     checkbox.checked = true;
@@ -42,12 +46,12 @@ function createListItem(text, isChecked = false) {
   span.insertAdjacentElement("afterend", buttonDelete);
 
   ul.appendChild(li);
-
-  buttonDelete.addEventListener("click", deleteTask);
 }
 
-function addTask() {
-  const taskElement = document.querySelector("main div input");
+function addTask(event) {
+  event.preventDefault();
+
+  const taskElement = document.querySelector("#inputTask");
   const task = taskElement.value;
 
   if (task.length === 0) {

@@ -5,11 +5,11 @@
   justify-content: center;
 }
 
-main > div > input {
+#inputTask {
   padding: 0.5rem;
 }
 
-main > div > button {
+form > button {
   padding: 0.5rem;
 }
 
