@@ -6,6 +6,11 @@
 body {
   display: flex;
   flex-direction: column;
+  background-color: #fed7d7;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {
