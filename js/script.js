@@ -31,8 +31,11 @@ function createListItem(text, isChecked = false) {
   const span = document.createElement("span");
   span.innerHTML = text;
   span.classList.add("task");
+  const buttonTTS = document.createElement("button");
+  buttonTTS.innerHTML = `<i class="fa fa-volume-up"></i>`;
+  buttonTTS.addEventListener("click", textToSpeech);
   const buttonDelete = document.createElement("button");
-  buttonDelete.innerHTML = "X";
+  buttonDelete.innerHTML = `<i class="fa fa-trash"></i>`;
   buttonDelete.addEventListener("click", deleteTask);
 
   if (isChecked) {
@@ -43,7 +46,8 @@ function createListItem(text, isChecked = false) {
   li.appendChild(checkbox);
 
   checkbox.insertAdjacentElement("afterend", span);
-  span.insertAdjacentElement("afterend", buttonDelete);
+  span.insertAdjacentElement("afterend", buttonTTS);
+  buttonTTS.insertAdjacentElement("afterend", buttonDelete);
 
   ul.appendChild(li);
 }
@@ -93,4 +97,44 @@ function deleteTask(event) {
         save();
       }
     });
+}
+
+async function textToSpeech(event) {
+  console.log(event);
+  const span = event.path[1].children[1];
+  const text = span.innerText;
+  const input = {
+    text: text,
+  };
+  const voice = {
+    languageCode: "pt-BR",
+    ssmlGender: "MALE",
+  };
+  const audioConfig = {
+    audioEncoding: "OGG_OPUS",
+  };
+
+  const rawResponse = await fetch(
+    "https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyAyiSvc5W10cPhyRrgeoTPcQI0GFddUy9E",
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input, voice, audioConfig }),
+    }
+  );
+  const content = await rawResponse.json();
+  const b64toBlob = async (base64, type = "application/octet-stream") => {
+    const response = await fetch(`data:${type};base64,${base64}`);
+    const content = await response.blob();
+    return content;
+  };
+  //fetch(`data:${type};base64,${base64}`).then((res) => res.blob());
+
+  const contentBlob = await b64toBlob(content.audioContent, "audio/ogg");
+  const audioURL = URL.createObjectURL(contentBlob);
+  const audio = new Audio(audioURL);
+  audio.play();
 }

@@ -1,16 +1,54 @@
+* {
+  color: #f0f0f0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
+  margin: 0 auto;
+  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  background-color: #fa4949;
+  border-radius: 8px;
+}
+
+header p {
+  font-size: 12px;
+}
+
+input {
+  background-color: #fed7d7;
+  color: #1f0d3c;
+}
+
+button {
+  background-color: #1f0d3c;
+}
+
+main {
+  width: 95%;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
 }
 
 #inputTask {
+  width: 240px;
   padding: 0.5rem;
+  border-radius: 8px;
 }
 
 form > button {
   padding: 0.5rem;
+  border-radius: 8px;
 }
 
 #toDoList {
@@ -30,10 +68,20 @@ form > button {
 }
 
 #toDoList li span {
+  font-size: 14px;
   display: inline-block;
   margin-right: 1rem;
-  width: 180px;
+  width: 200px;
   overflow-wrap: break-word;
+}
+
+#toDoList li button {
+  margin-left: 0.5rem;
+  border-radius: 8px;
+}
+
+i {
+  pointer-events: none;
 }
 
 .done {

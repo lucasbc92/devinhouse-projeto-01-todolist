@@ -7,6 +7,16 @@
     <title>DEVinHouse - Projeto 01 - To-Do List</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
     <script src="js/sweetalert2@11.js"></script>
     <script src="js/script.js"></script>
   </head>
@@ -14,7 +24,7 @@
     <div class="container">
       <header>
         <h1>Lista de Afazeres</h1>
-        <p>Desenvolvido por: Lucas Bueno Cesario</p>
+        <p>Desenvolvido por: Lucas Bueno Cesario <i class="fa fa-heart"></i></p>
       </header>
       <main>
         <form action="#" onsubmit="addTask(event)">
@@ -23,7 +33,7 @@
             type="text"
             placeholder="Digite uma tarefa..."
           />
-          <button type="submit">Adicionar</button>
+          <button type="submit"><i class="fa fa-plus"></i></button>
         </form>
         <div>
           <ul id="toDoList"></ul>

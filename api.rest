@@ -1,0 +1,16 @@
+POST https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyAyiSvc5W10cPhyRrgeoTPcQI0GFddUy9E HTTP/1.1
+content-type: application/json
+
+{
+    "input": {
+        "text": "Isto é um teste."
+    },
+    "voice": {
+        "languageCode": "pt-BR",
+        "name": "Teste",
+        "ssmlGender": "MALE"
+    },
+    "audioConfig": {
+        "audioEncoding": "OGG_OPUS"
+    }
+}
