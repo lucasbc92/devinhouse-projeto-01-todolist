@@ -113,7 +113,6 @@ async function textToSpeech(event) {
   const audioConfig = {
     audioEncoding: "OGG_OPUS",
   };
-
   const rawResponse = await fetch(
     "https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyAyiSvc5W10cPhyRrgeoTPcQI0GFddUy9E",
     {
@@ -131,7 +130,6 @@ async function textToSpeech(event) {
     const content = await response.blob();
     return content;
   };
-  //fetch(`data:${type};base64,${base64}`).then((res) => res.blob());
 
   const contentBlob = await b64toBlob(content.audioContent, "audio/ogg");
   const audioURL = URL.createObjectURL(contentBlob);
